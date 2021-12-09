@@ -1,0 +1,10 @@
+.menu {
+    text-align: center;
+    background-color: goldenrod;
+}
+
+.menu a {
+    padding: 40px;
+    text-decoration: none;
+    color: white;
+}

@@ -1,0 +1,36 @@
+<div class="container">
+    <h1 class="pb-4">Pipes</h1>
+    <h2 class="pb-2">Ejemplo de pipes predefinidos</h2>
+    <p>Fecha de Hoy: {{fechaHoy | date:'d/M/y'}}</p>
+    <p>Nombre: {{nombre}}</p>
+    <p>Nommbre con Mayúscula: {{nombre | uppercase}}</p>
+    <p>Nommbre con Minúscula: {{nombre | lowercase}}</p>
+    <p>Su saldo es: {{saldo | currency: '$'}}</p>
+    <p>Días de trabajo: {{dias | slice: 0:5}}</p>
+
+    <h1>Pipes personalizados</h1>
+    <h2>Listado de productos</h2>
+    <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="filterDatos" placeholder="Buscar"><br>
+    </div>
+
+    <table class="table table-bordered">
+        <thead class="bg-primary text-white">
+            <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dato of datos | filter: filterDatos">
+                <!-- <ng-template ngFor let-dato [ngForOf] = "datos"> -->
+                    <td>{{dato.codigo}}</td>
+                    <td>{{dato.descripcion}}</td>
+                    <td>{{dato.precio}}</td>
+                <!-- </ng-template> -->
+            </tr>
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,61 @@
+<div class="container pt-4">
+    <h1>Angular - Unidad 3</h1>
+    <h2>Directiva *NgFor</h2>
+    <ul class="list-group">
+    <li *ngFor="let persona of personas" class="list-item">
+        {{persona.nombre}}
+    </li>
+    </ul>
+
+    <h2 class="text.white">NgFor anidados</h2>
+    <ul class="list-group">
+    <li *ngFor="let ciudad of ciudades">
+        {{ciudad.nombre}}
+        <ul class="list-group">
+        <li *ngFor="let persona of ciudad.personas">
+            {{persona.nombre}}
+        </li>
+        </ul>
+    </li>
+    </ul>
+
+    <h2>Directiva *NgIf</h2>
+    <ul class="list-group" *ngFor="let persona of personas">
+        <!-- <ng-template ngFor let-persona [ngForOf]="personas" let-i="index"> -->
+            <li class="list-group-item" *ngIf="persona.edad > 30">
+                {{persona.nombre}}
+            </li>
+        <!-- </ng-template> -->
+    </ul>
+
+    <h2>Condiciones multiples</h2>
+
+    <ul class="list-group" *ngFor="let ciudad of ciudades"> 
+    <!-- <ng-template ngFor let-ciudad [ngForOf]="ciudades" let-j="index"> -->
+        <ng-template ngFor let-persona [ngForOf]="ciudad.personas" let-k="index" let-odd="odd">
+        <li class="list-group-item" [class.odd]="odd" *ngIf="ciudad.nombre === 'Concepción'">
+            {{persona.nombre}} - {{ciudad.nombre}}
+        </li>
+        <li class="list-group-item" [class.odd]="odd" *ngIf="ciudad.nombre === 'Santiago'">
+            {{persona.nombre}} - {{ciudad.nombre}}
+        </li>
+        <li class="list-group-item" [class.odd]="odd" *ngIf="ciudad.nombre === 'Talca'">
+            {{persona.nombre}} - {{ciudad.nombre}}
+        </li>
+        </ng-template>
+    <!-- </ng-template> -->
+    </ul>
+
+    <h3>Edad gente</h3>
+    <ul>
+        <ng-template ngFor let-persona [ngForOf]="personas" let-x="index">
+            <li>{{persona.edad}}</li>
+            <p *ngIf="persona.edad > 18; else menor" >
+                Es mayor de edad
+            </p>
+            <ng-template #menor>Es menor de edad</ng-template>
+        </ng-template>
+    </ul>
+</div>
+
+
